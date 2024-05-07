@@ -31,6 +31,7 @@ requirements:
     - matplotlib-base >=3.4.4
     - h5py
     - gromacs
+    - tqdm
 
 test:
   imports:
