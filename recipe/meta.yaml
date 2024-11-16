@@ -1,20 +1,20 @@
 {% set name = "gmx_MMPBSA" %}
-{% set version = "1.6.3" %}
-{% set sha256 = "c0e92afb48923bd03efa312a6707912f639e1597fb84769a449e4de2a375351f" %}
+{% set version = "1.6.4" %}
+{% set sha256 = "2fa2ab30acbb0c46041a2dd06d415dc8b6f4fdf8f3fc9b13d7a4a3df93b4ea7a" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name|lower }}/{{ name|lower }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
   number: 0
   noarch: python
   entry_points:
-     - gmx_MMPBSA = GMXMMPBSA.app:gmxmmpbsa
+    - gmx_MMPBSA = GMXMMPBSA.app:gmxmmpbsa
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
