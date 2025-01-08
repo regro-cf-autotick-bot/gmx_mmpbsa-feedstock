@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
      - gmx_MMPBSA = GMXMMPBSA.app:gmxmmpbsa
@@ -19,10 +19,10 @@ build:
 
 requirements:
   host:
-    - python >=3.9
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.9
+    - python >={{ python_min }}
     - pandas 1.2.2
     - seaborn <0.12
     - mpi4py <=3.1.5
@@ -38,6 +38,7 @@ test:
     - GMXMMPBSA
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
     - gmx_MMPBSA -h
